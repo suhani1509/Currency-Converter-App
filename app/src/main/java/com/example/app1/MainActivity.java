@@ -1,8 +1,10 @@
 package com.example.app1;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
+import androidx.appcompat.app.AppCompatDelegate;
+import android.content.SharedPreferences;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,6 +21,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        SharedPreferences prefs = getSharedPreferences("AppSettings", MODE_PRIVATE);
+        boolean isDark = prefs.getBoolean("darkMode", false);
+
+        if (isDark) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
         setContentView(R.layout.activity_main);
 
         // Linking UI
@@ -38,6 +49,16 @@ public class MainActivity extends AppCompatActivity {
 
         spFrom.setAdapter(adapter);
         spTo.setAdapter(adapter);
+
+
+
+
+
+        Button btnSettings = findViewById(R.id.btnSettings);
+
+        btnSettings.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+        });
 
         // Convert button
         btnConvert.setOnClickListener(new View.OnClickListener() {
@@ -109,5 +130,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return 0;
+
+
     }
 }
