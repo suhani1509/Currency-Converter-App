@@ -15,6 +15,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="40dp"/>
 
+    <!-- ✅ FIXED EDITTEXT -->
     <EditText
         android:id="@+id/etAmount"
         android:layout_width="match_parent"
@@ -23,7 +24,10 @@
         android:inputType="numberDecimal"
         android:textSize="24sp"
         android:padding="12dp"
-        android:background="@android:drawable/editbox_background"/>
+
+        android:textColor="@color/editTextText"
+        android:textColorHint="@color/editTextHint"
+        android:backgroundTint="@color/editTextBg"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -31,6 +35,7 @@
         android:text="From:"
         android:layout_marginTop="15dp"
         android:textStyle="bold"/>
+
     <Spinner
         android:id="@+id/spinnerFrom"
         android:layout_width="match_parent"
@@ -43,6 +48,7 @@
         android:text="To:"
         android:layout_marginTop="15dp"
         android:textStyle="bold"/>
+
     <Spinner
         android:id="@+id/spinnerTo"
         android:layout_width="match_parent"
